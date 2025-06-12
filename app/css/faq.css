@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+body{
+
+    padding: 3rem;
+}
+
+.custom-btn {
+  right: 2000px;
+  transition: background-color 0.3s ease-in-out;
+}
