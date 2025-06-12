@@ -1,7 +1,6 @@
-@import url("tailwindcss");
-
-body {
-  padding: 3rem;
+@import "tailwindcss";
+body{
+    padding: 3rem;
 }
 
 .custom-btn {

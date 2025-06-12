@@ -1,5 +1,4 @@
 "use client";
-
 import {useState} from "react";
 import "../css/faq.css";
 
@@ -32,7 +31,9 @@ const faqs: FAQ[] = [
 export default function Home() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const toggleAnswer = (index: number) => { setOpenIndex(openIndex === index ? null : index);};
+  const toggleAnswer = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
 
   return (
     <main>
