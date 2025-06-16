@@ -14,6 +14,8 @@ const eslintConfig = [
   {
     rules: {
       "react/no-unescaped-entities": "off",
+      "import-notation": "off",
+      "rule-empty-line-before": "off"
     },
   },
 ];
