@@ -1,103 +1,71 @@
-import Image from "next/image";
+"use client";
+import {useState} from "react";
+import "./css/faq.css";
+
+
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+const faqs: FAQ[] = [
+  {question: "How many days am I required to be in the office?",
+   answer: "At least 3 days in a week. Your selected days should be communicated with your lead beforehand.",} ,
+
+  {question: "What happens if I take a sick day or a holiday?",
+    answer: "If the sick day/holiday falls on one of your selected office days, your streak will be maintained and will not reset.",} ,
+
+  {question: "What is the 'Weekly Quota' ?",
+    answer: "It is simply a visual indicator indicate that keeps track of how many full days (out of the minimum 3 days) you have been to the office for the current work week.", } ,
+  {question: "Will my streak break if I do not come to the office on my selected day but attend on a different day?",
+    answer: "No, your streak will not break. However, your lead will be notified of your absence on the originally selected day.", },
+
+  {question:"What happens if I spend more than 6 hours and 30 minutes in the office but arrive later than 10:00 AM?Will my streak break?",
+    answer: "No, your streak will not break but you will be flagged for not getting to the office on time.",} ,
+
+  {question:"What happens if I forget to clock in using the logger? Is my day lost?",
+    answer: "If you do not clock in with the logger, your data source is solely reliant on he access control but in case the access control is offline, your data for that day might be inaccurate. So we encourage everyone to use the logger once in a while to help keep accurate data.",},
+
+  ];
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+  const toggleAnswer = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  return (
+    <main>
+      <div className="absolute top-[-10%] left-[-4%] w-40 h-40 rounded-full bg-[#BDFF00]"></div>
+
+      <h1 className="text-3xl text-center">FAQ's</h1>
+      <h2 className="p-6 text-gray-500 text-center">
+        Have Questions? We are here to help.
+      </h2>
+
+      <section className="space-y-9 ml-[30px] w-[80%]">
+        {faqs.map((faq, index) => (
+          <div key={index}>
+            <div className="flex justify-between items-center">
+              <p className="w-[70%]">{faq.question}</p>
+
+              <button
+                onClick={() => toggleAnswer(index)}
+                className="w-[25px] h-[25px] items-center justify-center font-light rounded-full border-1 border-black text-black dark:border-white dark:text-white dark:bg-black "
+              >
+                {openIndex === index ? "-" : "+"}
+              </button>
+            </div>
+
+            {openIndex === index && (
+              <div className="mt-4 text-gray-600 w-[80%] dark:text-[#a2a29c]">{faq.answer}</div>
+            )}
+
+            <hr className="mt-6 border-[#A9C900] border-[1.5px] "/>
+          </div>
+        ))}
+      </section>
+    </main>
   );
 }
