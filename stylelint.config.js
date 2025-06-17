@@ -1,11 +1,12 @@
 module.exports = {
+  extends: ['stylelint-config-standard'], 
   rules: {
-    "import-notation": "off",
-    "rule-empty-line-before": "off",
-    "at-rule-no-unknown": [
+    'import-notation': null,
+    'rule-empty-line-before': null,
+    'at-rule-no-unknown': [
       true,
       {
-        ignoreAtRules: ["theme"]
+        ignoreAtRules: ['tailwind', 'apply', 'variants', 'responsive', 'layer', 'theme']
       }
     ]
   }
