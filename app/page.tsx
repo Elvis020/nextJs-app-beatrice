@@ -36,7 +36,7 @@ export default function Home() {
   };
 
   return (
-    <main>
+    <main className ="p-[3rem]">
       <div className="absolute top-[-10%] left-[-4%] w-40 h-40 rounded-full bg-[#BDFF00]"></div>
 
       <h1 className="text-3xl text-center">FAQ's</h1>
